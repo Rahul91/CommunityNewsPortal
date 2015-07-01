@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block loggedin %}
+
+<div style="float: right;">
+<a href="/accounts/logout/"><button style="border-radius: 28px;
+  background: #eeeeee;
+  cursor:pointer;
+  font-family: Arial;
+  color: #000000;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+ ">Logout</button></a>
+<!--a href="/unsuscribed/{{ get_id.id }}"--><button onclick="myFunction()" style="border-radius: 28px;
+  background: #eeeeee;
+  cursor:pointer;
+  font-family: Arial;
+  color: #000000;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+ ">Unsuscribe</button></a>
+ </div>
+<div>	
+<script type="text/javascript">
+function showAlert() { alert('1. Delhi Daredevils vs Sunrisers Hyderabad, 45th Match, Shaheed Veer Narayan Singh International Stadium, Raipur\nDelhi Daredevils 157/4 (20.0 Ovs) \nSunrisers Hyderabad 163/4 (20.0 Ovs)\n\n2. Kolkata Knight Riders vs Kings XI Punjab, 44th Match, Eden Gardens, Kolkata\nSunrisers Hyderabad 163/4 (20.0 Ovs)\nKolkata Knight Riders 184/9 (19.5 Ovs)'); }
+
+</script>
+
+<script type="text/javascript">
+function myFunction() {
+    if (confirm("Press a button!") == true) {
+        <a href="/unsuscribed/{{ get_id.id }}"></a>;
+    }else{
+    	<a href="#"></a>
+    }
+}
+
+</script>
+<p><a href="#" onClick="showAlert();"><button style=
+"	background-color:#e4685d;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:80px;
+	padding:12px 20px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b23e35;
+ ">Notifications</button></a></p>
+ </div>
+  
+  <!--p>Click <a href="/accounts/profile/">here</a> to edit your profile information</p-->
+</div>
+</div>
+{% endblock %}
+

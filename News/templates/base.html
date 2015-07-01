@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}My Base Template{% endblock %}</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" >
+    
+</head>
+
+<body>
+	<div id="page" style="">
+
+
+    <div id="content">
+	<!--div>    
+	{% if messages %}
+	<ul class="messages">
+	    {% for message in messages %}
+	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	    {% endfor %}
+	</ul>
+	{% endif %}
+        </div-->
+        {% block content %}  {% endblock %}
+	</div>
+
+	{% if login %}
+	<div>
+	<p style="font-weight:normal;color:#27D6D6;float:left;letter-spacing:1pt;word-spacing:2pt;font-size:64px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;width:750px;">Register to get the latest news of around the world. Add your own content as well. Be a part of something big !!!</p>
+    <div id="login" style="color:black;padding: 15px; border:1px solid black; width:450px;height: 500px;background-color:#B9EDDC;float:right;backgroung-image:url"ipl2.jpg"; ">
+        {% block login %}{% endblock %}
+	</div>
+	</div>
+	{% endif %}
+
+		{% if loggedin %}
+    <div id="loggedin" style="">
+        {% block loggedin %}{% endblock %}
+	</div>
+	{% endif %}
+
+
+
+
+	</div>
+		
+</body>
+</html>

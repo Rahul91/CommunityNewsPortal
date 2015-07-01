@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<title>Home Page</title>
+
+
+<!--script type="text/javascript">
+(function() {
+  var httpRequest;
+  document.getElementById("ajaxButton").onclick = function() { makeRequest('test.html'); };
+
+  function makeRequest(url) {
+    if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+      httpRequest = new XMLHttpRequest();
+    } else if (window.ActiveXObject) { // IE
+      try {
+        httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+      } 
+      catch (e) {
+        try {
+          httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+        } 
+        catch (e) {}
+      }
+    }
+
+    if (!httpRequest) {
+      alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    httpRequest.onreadystatechange = alertContents;
+    httpRequest.open('GET', url);
+    httpRequest.send();
+  }
+
+  function alertContents() {
+    if (httpRequest.readyState === 4) {
+      if (httpRequest.status === 200) {
+        alert(httpRequest.responseText);
+      } else {
+        alert('There was a problem with the request.');
+      }
+    }
+  }
+})();
+</script-->
+
+<script type="text/javascript">
+	
+	function loadXMLDoc()
+{
+var xmlhttp;
+ xmlhttp=new XMLHttpRequest();
+ xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    	alert(httpRequest.responseText);
+    	 document.getElementById("myDiv").innerHTML=xmlhttp.s;
+      } else {
+        alert('There was a problem with the request.');
+      }
+   
+    
+  }
+  xmlhttp.open("GET","https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20cricket.scorecard%20where%20match_id%3D11985&format=json&diagnostics=true&env=store%3A%2F%2F0TxIGQMQbObzvU4Apia0V0&callback=getScore",true);
+xmlhttp.send();
+}
+</script>
+
+
+
+</head>
+<body>
+
+
+<div>
+
+<!--h2>AJAX</h2>
+<button type="button" onclick="loadXMLDoc()">Request data</button>
+<div id="myDiv"></div-->
+
+	<p style="font-weight:normal;color:#27D6D6;letter-spacing:1pt;word-spacing:2pt;font-size:64px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">Register to Suscribe to latest SCORE from Pepsi ILP 2015.
+	If you haven't yet registered, click <a href="/accounts/register/">here</a>.
+	<div style="font-weight:normal;color:#AAAAAA;letter-spacing:1pt;word-spacing:2pt;font-size:40px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">Already Registered?? Click <a href="/accounts/login/">here</a> to login</div>
+	</p> 
+	<br><br><br><br><br><br><br>
+	<p style="font-weight:normal;color:#000000;letter-spacing:-1pt;word-spacing:2pt;font-size:30px;text-align:left;font-family:arial, helvetica, sans-serif;line-height:2;">
+   My name is Rahul, I have developed this website. To know about me more, click <a target="blank" href="http://rahul91.github.io" >here</a>.</p>
+   	<p style="font-weight:normal;color:#27D6D6;word-spacing:2pt;font-size:15px;text-align:left;font-family:arial, helvetica, sans-serif;line-height:2;">
+    <a target="blank" href="https://github.com/Rahul91/Django_IPL" >Source Code</a>.</p>
+</div>
+</body>
+</html>

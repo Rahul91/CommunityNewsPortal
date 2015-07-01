@@ -1,0 +1,101 @@
+<html>  
+  <head><title>YQL and RSS: Yahoo Top News Stories</title>  
+<script>
+function loadXMLDoc()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function()
+    {
+    if (xmlhttp.readyState==4||1)
+    { 
+      if (xmlhttp.status==200)
+     {
+    //alert("working");
+    //document.getElementById("myDiv").innerHTML=xmlhttp.responseXML;
+    /*var text =xmlhttp.responseXML;
+    var obj=JSON.parse(text);
+
+    document.getElementById("myDiv").innerHTML=text;
+    document.getElementById("myDiv").innerHTML=obj.results[];*/
+    //alert("working")  
+    var xmldoc=xmlhttp.responseXML;
+    //alert("working") 
+
+    var series_name=xmldoc.getElementsByTagName("series_name").item(0).firstChild.data;
+    var match_no=xmldoc.getElementsByTagName("mn").item(0).firstChild.data;
+    var stadium=xmldoc.getElementsByTagName("stadium").item(0).firstChild.data;
+
+    var team1=xmldoc.getElementsByTagName("fn").item(0).firstChild.data;
+    var team1_id=xmldoc.getElementsByTagName("i").item(0).firstChild.data;
+    var run1=xmldoc.getElementsByTagName("r").item(0).firstChild.data;
+    var wicket1=xmldoc.getElementsByTagName("w").item(0).firstChild.data;
+    var over1=xmldoc.getElementsByTagName("o").item(0).firstChild.data;
+
+
+    var team2=xmldoc.getElementsByTagName("fn").item(1).firstChild.data;
+    var team2_id=xmldoc.getElementsByTagName("i").item(1).firstChild.data;
+    //var run2=xmldoc.getElementsByTagName("r").item(1).firstChild.data;
+    //var wicket2=xmldoc.getElementsByTagName("w").item(1).firstChild.data;
+
+    var status=xmldoc.getElementsByTagName("pms").item(0).firstChild.data;
+
+    var batting_team=xmldoc.getElementsByTagName("i").item(3).firstChild.data;
+    if (batting_team==team1_id)
+    {
+       var team_batting=team1;
+    }
+    else
+    {
+      team_batting=team2;
+    }
+
+    var toss=xmldoc.getElementsByTagName("toss").item(0).firstChild.data;
+
+    var series_id=xmldoc.getElementsByTagName("series_id").item(0).firstChild.data;
+    if (series_id==12208)
+      {
+        alert(series_name + ', Match No : ' +match_no +'\n\n' + stadium +'\n' + team1 + ' v/s ' + team2+'\n\n'+
+          team_batting + '\n'+'Run: ' +run1+'  Wicket: '+wicket1+'  Over: '+over1 );  
+      }
+      
+    //alert("working");
+      }
+    }
+    else
+    {
+      alert("There is no Live IPL Match going on");
+    
+    }
+}
+xmlhttp.open("GET","https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20cricket.scorecard.live.summary&diagnostics=true&env=store%3A%2F%2F0TxIGQMQbObzvU4Apia0V0",true);
+xmlhttp.send();
+}
+</script>
+</head>
+
+<button type="button" onclick="loadXMLDoc()" style=
+" background-color:#e4685d;
+  border:1px solid #ffffff;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:40px;
+  padding:12px 20px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #b23e35;
+ ">Live Score</button>
+<div id="myDiv"></div>
+
+
+<button>Notify me!</button>
+  </body>  
+</html> 

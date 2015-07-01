@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<title>
+	{% block title %} News Portal {% endblock %}
+</title>
+	<!--script src="{% static "assets/js/jquery-2.0.0.min.js" %}"></script>
+	<script src="{% static "assets/js/ajax.js"  %}"></script-->
+
+<style type="text/css">
+body{
+	text-align: center;
+}
+
+#page{
+	width : 1200px;
+	text-align: left;
+	margin: 10px auto 20px auto;
+	background-color: #124251; 
+}
+
+#sidebar{
+	float :left;
+	width :300px;
+	border:1px solid #000;
+}
+
+#content{
+	float: left;
+	width: 800px;
+	border:1px solid #ff0;
+	padding: 10px;
+}
+
+ </style>
+
+</head>
+<body>
+	<div id="page">
+	<div id="sidebar">
+		{% block sidebar %}
+		<ul>
+		<li><a href="/admin">Admin</a></li>
+		</ul>
+
+	{% endblock %}
+	</div>
+
+	<div id="content">
+		{% block content %} This is content {% endblock %}
+		</div>
+		</div>
+</body>
+</html>

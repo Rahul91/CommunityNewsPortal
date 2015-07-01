@@ -1,0 +1,25 @@
+{% extends "base1.html" %}
+
+{% block sidebar %}
+<ul style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
+	<li><a href="/admin">Admin</a></li>
+	<li><a href="/accounts/register">Register</a></li>
+	<li><a href="/accounts/login">Login</a></li>
+</ul>
+
+{% endblock %}
+
+
+{% block content %}
+	<h1>News HeadLines</h1><br>
+	{% for x in news %}
+	<div>
+		<h2 style="font-weight:normal;color:#27D6D6;letter-spacing:1pt;word-spacing:2pt;font-size:30px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
+		<a href="/news/get/{{x.id}}">{{ x.heading }}</a>
+		</h2>
+		<p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;"> {{ x.body }}<br><br>
+			Published Date: {{ x.pub_date }}<br>Upvote:{{ x.upvote }}	
+		</p>
+	</div>
+	{% endfor %}
+{% endblock %}

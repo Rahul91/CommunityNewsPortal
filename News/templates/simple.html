@@ -1,0 +1,152 @@
+<html>  
+  <head><title>YQL and RSS: Yahoo Top News Stories</title>  </head>
+
+
+<script>
+
+//document.getElementById("demo").onload=function() {  notifyMe()  };
+
+function notifyMe() {
+  // Let's check if the browser supports notifications
+
+
+var xmlhttp;
+//alert("ram");
+  if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+     xmlhttp=new XMLHttpRequest();
+    }
+  else
+    {// code for IE6, IE5
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+              if (!("Notification" in window)) {
+                  alert("This browser does not support desktop notification");
+                }
+
+                // Let's check whether notification permissions have alredy been granted
+                else if (Notification.permission === "granted") {
+                  // If it's okay let's create a notification
+                  var notification = new Notification("Hi there!");
+                }
+
+                // Otherwise, we need to ask the user for permission
+                else if (Notification.permission !== 'denied') {
+                  Notification.requestPermission(function (permission) {
+                    // If the user accepts, let's create a notification
+                    if (permission === "granted") {
+                      var notification = new Notification("Hi there!");
+                    }
+                  });
+                }
+
+    xmlhttp.onreadystatechange=function()
+    {
+      if (xmlhttp.readyState==4 || 1)
+      { 
+        if (xmlhttp.status==200)
+        {
+          //var response="aaya re";
+          //alert("vjvj");
+          var xmldoc=xmlhttp.responseXML;
+
+          var series_name=xmldoc.getElementsByTagName("series_name").item(0).firstChild.data;
+          var match_no=xmldoc.getElementsByTagName("mn").item(0).firstChild.data;
+          var stadium=xmldoc.getElementsByTagName("stadium").item(0).firstChild.data;
+          //
+          var team1=xmldoc.getElementsByTagName("fn").item(0).firstChild.data;
+          var team1_id=xmldoc.getElementsByTagName("i").item(0).firstChild.data;
+          var run1=xmldoc.getElementsByTagName("r").item(0).firstChild.data;
+          var wicket1=xmldoc.getElementsByTagName("w").item(0).firstChild.data;
+          var over1=xmldoc.getElementsByTagName("o").item(0).firstChild.data;
+
+          //alert("vjvj");
+
+          var team2=xmldoc.getElementsByTagName("fn").item(1).firstChild.data;
+          var team2_id=xmldoc.getElementsByTagName("i").item(1).firstChild.data;
+          //var run2=xmldoc.getElementsByTagName("r").item(1).firstChild.data;
+          //var wicket2=xmldoc.getElementsByTagName("w").item(1).firstChild.data;
+          //var x=[];
+          //x.push(run1);
+
+          //alert(x.pop());
+
+          //var status=xmldoc.getElementsByTagName("pms").item(0).firstChild.data;
+
+          var batting_team=xmldoc.getElementsByTagName("i").item(3).firstChild.data;
+
+          /*if (batting_team==team1_id)
+            {
+               var team_batting=team1;
+            }
+          else
+            {
+              team_batting=team2;
+            }
+
+          
+          var toss=xmldoc.getElementsByTagName("toss").item(0).firstChild.data;*/
+
+          var series_id=xmldoc.getElementsByTagName("series_id").item(0).firstChild.data;
+          
+          //alert("aaya");
+          if (series_id==1282)
+            {
+              //location.reload();
+               
+               if (run1==68)
+               {
+                //alert(run1);
+                var notify=(series_name + ', Match No : '+match_no +'\n\n' + stadium +'\n' + team1 + ' v/s ' + team2+'\n\n'+
+          team_batting + '\n'+'Run: ' +run1+'  Wicket: '+wicket1+'  Over: '+over1);
+              var response=wicket1;
+              alert(wicket1);
+ 
+
+              if (!("Notification" in window)) {
+                  alert("This browser does not support desktop notification");
+                }
+
+                // Let's check whether notification permissions have alredy been granted
+                else if (Notification.permission === "granted") {
+                  // If it's okay let's create a notification
+                  var notification = new Notification("Hi there!");
+                }
+
+                // Otherwise, we need to ask the user for permission
+                else if (Notification.permission !== 'denied') {
+                  Notification.requestPermission(function (permission) {
+                    // If the user accepts, let's create a notification
+                    if (permission === "granted") {
+                      var notification = new Notification("Hi there!");
+                    }
+                  });
+                }
+          //alert(response);
+              }
+                //var notification = new Notification(series_name + ', Match No : ' +match_no +'\n\n' + stadium +'\n' + 
+            }
+
+          //}
+      }
+     else{
+         response="nope";
+         alert("nhi aaya");
+       }
+    
+   }
+
+
+    xmlhttp.open("GET","https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20cricket.scorecard%20where%20match_id%3D11985&diagnostics=true&env=store%3A%2F%2F0TxIGQMQbObzvU4Apia0V0",true);
+    
+    xmlhttp.send();
+
+};
+
+</script>
+<body>
+<button onclick="notifyMe()">hello</button>
+</body>
+
+</html>

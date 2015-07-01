@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head>
+<title>Signup Page</title>
+</head>
+<body>
+{% for x in email %}
+	<h1>Print : {{ x.Name }}</h1>
+ {% endfor %}
+</body>
+
+
+</html>

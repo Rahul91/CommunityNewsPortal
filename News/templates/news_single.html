@@ -1,0 +1,18 @@
+{% extends "base1.html" %}
+
+{% block sidebar %}
+<ul>
+   <li><a href="/">Home</a></li>
+ </ul>
+{% endblock %}
+
+{% block content %}
+<h2 style="font-weight:normal;color:#27D6D6;letter-spacing:1pt;word-spacing:2pt;font-size:30px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">News Headlines : {{ news.heading }}</h2>
+
+<p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
+Body:{{ news.body }}<br>
+Published Date :{{ news.pub_date }}<br>
+<a href="/upvotes/{{ news.id }}">Upvotes : {{ news.upvote }}</a>
+<p>
+
+{% endblock %}

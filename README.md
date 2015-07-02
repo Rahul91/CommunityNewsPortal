@@ -44,6 +44,14 @@ NewsPortal is the name of Project and News is the App.
 4. Thats, all, now you this website is up and runnig on your localhost. Just do:
 
             python manage.py runserver
-            
+ 
+ 
+#Scope for Improvements
+
+1. Javascript "alert" function needs to be implemented, for prompting if a user is not logged-in and trying to upvote.
+2. After a loggedin user, adds a content, then he is routed to home page, ideally he should be routed to his page. Need to correct this.
+3. Once added a news, only admin can remove it. Ideally user who have added, should have authorization to edit it. This feature will soon be added.
+
+
 #Bugs
 In case of find any bug, feel free to clone it, replicate in your system, fix it and push to masters, or you drop a mail to priyrahulmishra@gmail.com

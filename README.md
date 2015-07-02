@@ -9,7 +9,7 @@ A python-django based website, that lets user, watch news, add news and upvote t
 The project is up-and-running i.e. deployed on Heroku.
 NewsPortal is the name of Project and News is the App.
     
-    Link: http://arcane-mountain-4106.herokuapp.com/
+    Link: http://degrassi-smarties-1009.herokuapp.com/
 
 
 #Logic Flow

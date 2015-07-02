@@ -1,8 +1,7 @@
 # Exotel_NewsPortal
 
 Get live news feed.
-
-A online news portal by the community, for the community.
+An online news portal by the community, for the community.
 
 #Project Detail
 A python-django based website, that lets user, watch news, add news and upvote there favourate content.

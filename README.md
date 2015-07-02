@@ -1,6 +1,5 @@
 # Exotel_NewsPortal
 
-Get live news feed.
 An online news portal by the community, for the community.
 
 #Project Detail
@@ -24,7 +23,14 @@ NewsPortal is the name of Project and News is the App.
    3. HTML(becasue, its needed!!!)
    4. CSS(Styling)
    5. Sqlite3(Database)
-  
+ 
+#Scope for Improvements
+
+1. Javascript "alert" function needs to be implemented, for prompting if a user is not logged-in and trying to upvote.
+2. If a loggedin user, adds a content, then he is routed to home page, ideally he should be routed to his page. Need to correct this.
+3. Once added a news, only admin can remove it. Ideally user who have added, should has authorization to edit it. This feature will soon be added.
+
+ 
 #Cloning the repository
 
 1. Create a virtualenv, activate it and get in:
@@ -45,12 +51,6 @@ NewsPortal is the name of Project and News is the App.
 
             python manage.py runserver
  
- 
-#Scope for Improvements
-
-1. Javascript "alert" function needs to be implemented, for prompting if a user is not logged-in and trying to upvote.
-2. After a loggedin user, adds a content, then he is routed to home page, ideally he should be routed to his page. Need to correct this.
-3. Once added a news, only admin can remove it. Ideally user who have added, should have authorization to edit it. This feature will soon be added.
 
 
 #Bugs

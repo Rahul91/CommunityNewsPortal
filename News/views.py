@@ -1,3 +1,4 @@
+import urllib2
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 #from django.template.loader import get_template
@@ -10,11 +11,15 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 #from models import ipl_scores 
 from forms import newsform
+from bs4 import BeautifulSoup
+
+
 
 def login(request):
-	c={ }
-	c.update(csrf(request))
-	return render(request,'login.html')
+	args={}
+	args.update(csrf(request))
+	args['login']=True
+	return render(request,'login.html',args)
 
 def auth_view(request,id=1):
 	username = request.POST.get('username', '')
@@ -47,11 +52,17 @@ def loggedin(request,id=1):
 	return render(request,'loggedin_home.html',args)
 
 def invalid_login(request):
-	return render(request,'invalid_login.html')
+	args = {}
+	args.update(csrf(request))
+	args['invalid']=True
+	return render(request,'invalid_login.html',args)
 
 def logout(request):
+	args = {}
+ 	args.update(csrf(request))
+ 	args['logout']=True
 	auth.logout(request)
-	return render(request,'logout.html')
+	return render(request,'logout.html',args)
 
 def register_user(request):
     if request.method == 'POST':
@@ -60,7 +71,7 @@ def register_user(request):
             form.save()
             return HttpResponseRedirect('/accounts/register_success')
      	else:
-     		return HttpResponseRedirect('/accounts/bad_request')
+     		return HttpResponseRedirect('/accounts/bad_request', )
         
     else:
     	
@@ -70,30 +81,60 @@ def register_user(request):
 
     
     	args['form'] = UserCreationForm()
-    	args['login'] = True
+    	#args['login'] = True
+    	args['register'] = True
 
     	return render(request,'register.html', args)
 
 
 def register_success(request):
-    return render(request,'register_success.html')
-
+	args={}
+	args.update(csrf(request))
+	args['home']=True
+	return render(request,'register_success.html',args)
+    
 
 def home(request):
 	args = {}
 	args.update(csrf(request))
-
+	args['home']=True
 	args['news'] = news.objects.all().order_by('-pub_date')
 	return render(request,"home.html", args)
 
+
 def bad_request(request):
-	return render(request, "bad_request.html")
+	args = {}
+	args.update(csrf(request))
+	args['home']=True
+	return render(request,"bad_request.html",args)
+
 
 def add_news(request):
 	if request.POST:
 		form = newsform(request.POST)
 		if form.is_valid():
 			form.save()
+			link = str(form.cleaned_data['heading'])
+			print link
+			x = news.objects.get(heading=link)
+
+			#fecth_title = form.cleaned_data['title']
+			string_link=repr(link)
+			print type(string_link), string_link
+			url = urllib2.urlopen(link)
+			soup = BeautifulSoup(url)
+			title=soup.find('title').text
+			x.title=title
+			
+
+			form.save()
+			x.save()
+			args = {}
+			args.update(csrf(request))
+			args['add_news']=True
+			args['title']=title
+			args['news'] = news.objects.all().order_by('-pub_date')
+			#return render(request,"home.html", args)
 			return HttpResponseRedirect('/')
 
 	else:
@@ -105,9 +146,11 @@ def add_news(request):
 		args['form'] = form
 		return render(request,'add_news.html', args)
 
+
 def news_single(request,id=1):
 	args = {}
 	args.update(csrf(request))
+	args['login']=True
 
 	args['news']= news.objects.get(id=id)
 	return render(request,"news_single.html", args)

@@ -1,4 +1,4 @@
-{% extends "base1.html" %}
+{% extends "base.html" %}
 
 {% block content %}
   <h2>Add News</h2>
@@ -8,11 +8,11 @@
 
   {% endfor %}
   
-  <form action="/news/add_news/" method="post">{% csrf_token %}
+  <form action="/news/add_news/" method="POST">{% csrf_token %}
    
-    HeadLine : {{ form.heading }}<br>
-    Body : {{ form.body }}<br>
-    Upvote : {{ form.upvote }}
+    Add Url : {{ form.heading }}<br><br>
+    Upvote  : {{ form.upvote }}
+
   <br><br><br><br>
   
   <input type="submit" value="Add News" style="	border-radius:4px;

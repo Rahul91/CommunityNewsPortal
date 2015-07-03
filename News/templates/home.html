@@ -1,6 +1,6 @@
-{% extends "base1.html" %}
+{% extends "base.html" %}
 
-{% block sidebar %}
+{% block sidebar-home %}
 <ul style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
 	<li><a href="/admin">Admin</a></li>
 	<li><a href="/accounts/register">Register</a></li>
@@ -10,15 +10,16 @@
 {% endblock %}
 
 
-{% block content %}
-	<h1>News HeadLines</h1><br>
+{% block content-home %}
+	<h1 <p style="font-weight:bold;text-decoration:underline;text-transform:uppercase;color:#1D8DA3;letter-spacing:1pt;word-spacing:2pt;font-size:61px;text-align:left;font-family:arial, helvetica, sans-serif;line-height:1;">News HeadLines</h1><br>
 	{% for x in news %}
 	<div>
-		<h2 style="font-weight:normal;color:#27D6D6;letter-spacing:1pt;word-spacing:2pt;font-size:30px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
-		<a href="/news/get/{{x.id}}">{{ x.heading }}</a>
+		<h2 style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:30px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
+		<a href="/news/get/{{x.id}}">{{ x.title|title }}</a>
 		</h2>
-		<p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;"> {{ x.body }}<br><br>
-			Published Date: {{ x.pub_date }}<br>Upvote:{{ x.upvote }}	
+		<p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
+			Published Date: {{ x.pub_date }}<br>Upvote:{{ x.upvote }}<br>
+			----------------------------------------------------------------------------------------------	
 		</p>
 	</div>
 	{% endfor %}

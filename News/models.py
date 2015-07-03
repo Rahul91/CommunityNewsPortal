@@ -1,11 +1,13 @@
 from django.db import models
+from bs4 import BeautifulSoup
+import urllib2
 
 # Create your models here.
 class news(models.Model):
-	heading =  models.CharField(max_length=40)
-	body = models.TextField()
+	heading =  models.CharField(max_length=300)
+	title = models.CharField(max_length=150,default="title")
 	pub_date = models.DateTimeField(auto_now_add=True)
-	upvote = models.IntegerField(default=1)
+	upvote = models.IntegerField(default=0)
 
 
 	def __unicode__(self):

@@ -1,48 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{% block title %}My Base Template{% endblock %}</title>
+<title>
+	{% block title %} News Portal {% endblock %}
+</title>
+<style type="text/css">
 
-    <link rel="stylesheet" type="text/css" href="style.css" >
-    
-</head>
+body{
+	text-align: center;
+}
 
-<body>
-	<div id="page" style="">
+#page{
+	width : 1200px;
+	text-align: left;
+	margin: 10px auto 20px auto;
+	background-color: #124251; 
+}
+
+#sidebar{
+	float :left;
+	width :300px;
+	border: 5px solid #27D6D6;
+}
+
+#content{
+	float: left;
+	width: 800px;
+	border: 5px solid #27D6D6;
+	padding: 10px;
+}
+
+#page-loggedin{
+	width : 1200px;
+	text-align: left;
+	margin: 10px auto 20px auto;
+	background-color: #124251; 
+}
+
+#sidebar-loggedin{
+	float :left;
+	width :300px;
+	border: 5px solid #27D6D6;
+}
+
+#content-loggedin{
+	float: left;
+	width: 800px;
+	border: 5px solid #27D6D6;
+	padding: 10px;
+}
+
+#page-logout{
+	width : 1200px;
+	text-align: left;
+	margin: 10px auto 20px auto;
+	background-color: #124251; 
+}
+
+#sidebar-logout{
+	float :left;
+	width :300px;
+	border: 5px solid #27D6D6;
+}
+
+#content-logout{
+	float: left;
+	width: 800px;
+	border: 5px solid #27D6D6;
+	padding: 10px;
+}
+
+#page-home{
+	width : 1200px;
+	text-align: left;
+	margin: 10px auto 20px auto;
+	background-color: #124251; 
+}
+
+#sidebar-home{
+	float :left;
+	width :300px;
+	border: 5px solid #27D6D6;
+}
+
+#content-home{
+	float: left;
+	width: 800px;
+	border: 5px solid #27D6D6;
+	padding: 10px;
+}
+
+#page-register{
+	width : 1250px;
+	text-align: left;
+	margin: 10px auto 20px auto;
+	background-color: #124251; 
+}
+
+#sidebar-register{
+	float :left;
+	width :300px;
+	border: 5px solid #27D6D6;
+}
+
+#content-register{
+	float: left;
+	width: 800px;
+	border: 5px solid #27D6D6;
+	padding: 10px;
+}
 
 
-    <div id="content">
-	<!--div>    
-	{% if messages %}
-	<ul class="messages">
-	    {% for message in messages %}
-	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-	    {% endfor %}
-	</ul>
-	{% endif %}
-        </div-->
-        {% block content %}  {% endblock %}
+#page-singlenews{
+	width : 1250px;
+	text-align: left;
+	margin: 10px auto 20px auto;
+	background-color: #124251; 
+}
+
+#sidebar-singlenews{
+	float :left;
+	width :300px;
+	border: 5px solid #27D6D6;
+}
+
+#content-singlenews{
+	float: left;
+	width: 800px;
+	border: 5px solid #27D6D6;
+	padding: 10px;
+}
+
+
+#sidebar-invalid{
+	float :left;
+	width :300px;
+	border: 5px solid #27D6D6;
+}
+
+#content-invalid{
+	float: left;
+	width: 800px;
+	border: 5px solid #27D6D6;
+	padding: 10px;
+}
+
+
+ </style>
+
+ <body>
+
+	{% if register %}
+	<div id="page-register">
+	<div id="sidebar-register">
+		{% block sidebar-register %}
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/admin/">Admin</a></li>
+		</ul>
+		{% endblock %}
+		</div>
+	<div id="content-register">
+	<p style="font-weight:normal;color:#000000;float:left;letter-spacing:1pt;word-spacing:2pt;font-size:35px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;width:200px;">By the Community, For the community, By the Community</p>
+    <div id="login" style="color:black;padding: 15px; border:1px solid black; width:450px;height: 500px;background-color:#B9EDDC;float:right;backgroung-image:url">
+    {% block login %} {% endblock %}
 	</div>
+	</div>
+	</div>
+	{% endif %} 
+
 
 	{% if login %}
-	<div>
-	<p style="font-weight:normal;color:#27D6D6;float:left;letter-spacing:1pt;word-spacing:2pt;font-size:64px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;width:750px;">Register to get the latest news of around the world. Add your own content as well. Be a part of something big !!!</p>
-    <div id="login" style="color:black;padding: 15px; border:1px solid black; width:450px;height: 500px;background-color:#B9EDDC;float:right;backgroung-image:url"ipl2.jpg"; ">
-        {% block login %}{% endblock %}
+ 	<div id="page">
+	<div id="sidebar">
+		{% block sidebar %}
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/admin/">Admin Login</a></li>
+		</ul>
+		{% endblock %}
+	</div>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
 	</div>
 	</div>
 	{% endif %}
 
-		{% if loggedin %}
-    <div id="loggedin" style="">
-        {% block loggedin %}{% endblock %}
+
+	{% if add_news %}
+	{% endif %}
+
+	{% if loggedin %}
+	<div id="page-loggedin">
+	<div id="sidebar-loggedin">
+		{% block sidebar-loggedin %}
+		<ul>
+			<li><a href="/">Home</a></li>
+		</ul>
+		{% endblock %}
+		</div>
+	<div id="content-loggedin">
+	    {% block content-loggedin %}
+        {% endblock %}
+	</div>
 	</div>
 	{% endif %}
 
 
-
-
+	{% if logout %}
+	<div id="page-logout">
+	<div id="sidebar-logout">
+		{% block sidebar-logout %}
+		<ul>
+			<li><a href="/">Home</a></li>
+		</ul>
+		{% endblock %}
+		</div>
+	<div id="content-logout">
+	    {% block content-logout %}
+        {% endblock %}
 	</div>
-		
-</body>
+	</div>
+	{% endif %}
+
+	{% if home %}
+ 	<div id="page-home">
+	<div id="sidebar-home">
+		{% block sidebar-home %}
+		<ul>
+			<li><a href="/">Home</a></li>
+		</ul>
+		{% endblock %}
+	</div>
+    <div id="content-home">
+        {% block content-home %}
+        {% endblock %}
+	</div>
+	</div>
+	{% endif %}
+
+	{% if invalid %}
+	<div id="sidebar-invalid">
+		{% block sidebar-invalid %}
+		<ul>
+			<li><a href="/admin/">Admin Login</a></li>
+		</ul>
+		{% endblock %}
+	</div>
+    <div id="content-invalid">
+        {% block content-invalid %}
+        {% endblock %}
+	</div>
+	{% endif %}
+
+
+</body>   
+</head>
 </html>

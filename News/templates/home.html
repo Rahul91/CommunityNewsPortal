@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+
+<script type="text/javascript">
 {% block sidebar-home %}
 <ul style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
 	<li><a href="/admin">Admin</a></li>
@@ -15,12 +17,16 @@
 	{% for x in news %}
 	<div>
 		<h2 style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:30px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
-		<a href="/news/get/{{x.id}}">{{ x.title|title }}</a>
+		{% if login %}
+			<a href="/news/get/{{x.id}}"><u>{{ x.title|title }}</a></u>
+		{% endif %}
+		<div onclick=Warn()>{{ x.title|title }}</div>
 		</h2>
 		<p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
-			Published Date: {{ x.pub_date }}<br>Upvote:{{ x.upvote }}<br>
+			Published Date: {{ x.pub_date }}<br><div onclick=Warn()>Upvote:{{ x.upvote }}</div><br>
 			----------------------------------------------------------------------------------------------	
 		</p>
 	</div>
 	{% endfor %}
+</script>
 {% endblock %}

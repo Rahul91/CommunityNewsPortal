@@ -13,18 +13,18 @@
 
 
 {% block content-home %}
-	<h1 <p style="font-weight:bold;text-decoration:underline;text-transform:uppercase;color:#1D8DA3;letter-spacing:1pt;word-spacing:2pt;font-size:61px;text-align:left;font-family:arial, helvetica, sans-serif;line-height:1;">News HeadLines</h1><br>
+	<h1 style="font-weight:bold;text-decoration:underline;text-transform:uppercase;color:#1D8DA3;letter-spacing:1pt;word-spacing:2pt;font-size:35px;text-align:left;font-family:arial, helvetica, sans-serif;line-height:1;">News HeadLines</h1><br>
 	{% for x in news %}
 	<div>
-		<h2 style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:30px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
+		<h2 style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
 		{% if login %}
 			<a href="/news/get/{{x.id}}"><u>{{ x.title|title }}</a></u>
 		{% endif %}
 		<div onclick=Warn()>{{ x.title|title }}</div>
 		</h2>
-		<p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
+		<p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:15px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
 			Published Date: {{ x.pub_date }}<br><div onclick=Warn()>Upvote:{{ x.upvote }}</div><br>
-			----------------------------------------------------------------------------------------------	
+			------------------------------------------------------------------------------------------------------------------------------------------------------
 		</p>
 	</div>
 	{% endfor %}

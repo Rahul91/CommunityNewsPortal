@@ -1,15 +1,12 @@
 import urllib2
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
-#from django.template.loader import get_template
-#from django.template import Context
 from models import news
 from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-#from models import ipl_scores 
 from forms import newsform
 from bs4 import BeautifulSoup
 
@@ -31,17 +28,10 @@ def auth_view(request,id=1):
 		a=str(User.objects.get(username=user.username).id)
 		
 		return HttpResponseRedirect('/accounts/loggedin/'+(a))
-		'''
-		id=User.objects.get(id=1)
-		args = {}
-	 	args.update(csrf(request))
-	 	return render(request,"loggedin.html", args)
-'''
 	else:
 		return HttpResponseRedirect('/accounts/invalid')
 
 def loggedin(request,id=1):
-
 	args = {}
  	args.update(csrf(request))
 
@@ -81,7 +71,6 @@ def register_user(request):
 
     
     	args['form'] = UserCreationForm()
-    	#args['login'] = True
     	args['register'] = True
 
     	return render(request,'register.html', args)
@@ -118,7 +107,6 @@ def add_news(request):
 			print link
 			x = news.objects.get(heading=link)
 
-			#fecth_title = form.cleaned_data['title']
 			string_link=repr(link)
 			print type(string_link), string_link
 			url = urllib2.urlopen(link)
@@ -134,7 +122,6 @@ def add_news(request):
 			args['add_news']=True
 			args['title']=title
 			args['news'] = news.objects.all().order_by('-pub_date')
-			#return render(request,"home.html", args)
 			return HttpResponseRedirect('/')
 
 	else:

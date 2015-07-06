@@ -64,12 +64,10 @@ def register_user(request):
      		return HttpResponseRedirect('/accounts/bad_request', )
         
     else:
-    	
         form = UserCreationForm()
     	args = {}
     	args.update(csrf(request))
 
-    
     	args['form'] = UserCreationForm()
     	args['register'] = True
 
@@ -98,7 +96,11 @@ def bad_request(request):
 	return render(request,"bad_request.html",args)
 
 
-def add_news(request):
+def add_news(request,id=1):
+
+	a=str(request.build_absolute_uri())
+	user_id = a.split('/')[-2]
+
 	if request.POST:
 		form = newsform(request.POST)
 		if form.is_valid():
@@ -114,6 +116,7 @@ def add_news(request):
 			title=soup.find('title').text
 			x.title=title
 			
+			x.user_id=user_id
 
 			form.save()
 			x.save()
@@ -121,12 +124,14 @@ def add_news(request):
 			args.update(csrf(request))
 			args['add_news']=True
 			args['title']=title
+			args['get_id']=user_id
 
 			'''y = user_news.objects.get(title=title)
 			y.save()'''
 
-			args['news'] = news.objects.all().order_by('-pub_date')
-			return HttpResponseRedirect('/')
+			#args['news'] = news.objects.all().order_by('-pub_date')
+			return HttpResponseRedirect('/accounts/loggedin/'+(user_id))
+			#return render(request,'loggedin_home.html',args)
 
 	else:
 		form = newsform()

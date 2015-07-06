@@ -8,7 +8,7 @@
 
   {% endfor %}
   
-  <form action="/news/add_news/" method="POST">{% csrf_token %}
+  <form method="POST">{% csrf_token %}
    
     Add Url : {{ form.heading }}
 
@@ -24,6 +24,6 @@
 	font-size:40px;
 	padding:6px 15px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #b23e35;" onclick="goback()" />
+	text-shadow:0px 1px 0px #b23e35;" onclick=alert("News has been added") />
   </form>
 {% endblock %}

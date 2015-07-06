@@ -4,8 +4,8 @@
 <ul style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:25px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
 	Hi {{ get_id.username }}!!!<br><br>
 	<li><a href="/accounts/logout">Logout</a></li>
-	<li><a href="/news/add_news">Add News</a></li>
-	<li><a href="/accounts/loggedin/{{ get_id.id }}">Home</a></li>
+	<li><a href="/news/add_news/user/{{ get_id.id }}">Add News</a></li>
+	
 </ul>
 
 {% endblock %}

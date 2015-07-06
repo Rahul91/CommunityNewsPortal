@@ -121,6 +121,10 @@ def add_news(request):
 			args.update(csrf(request))
 			args['add_news']=True
 			args['title']=title
+
+			'''y = user_news.objects.get(title=title)
+			y.save()'''
+
 			args['news'] = news.objects.all().order_by('-pub_date')
 			return HttpResponseRedirect('/')
 

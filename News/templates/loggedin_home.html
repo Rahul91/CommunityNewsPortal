@@ -12,11 +12,11 @@
 
 
 {% block content-loggedin %}
-	<h1>News HeadLines</h1><br>
+	<h1 style="font-weight:bold;text-decoration:underline;text-transform:uppercase;color:#1D8DA3;letter-spacing:1pt;word-spacing:2pt;font-size:35px;text-align:left;font-family:arial, helvetica, sans-serif;line-height:1;">News HeadLines</h1><br>
 	{% for x in news %}
 	<div>
 		<h2 style="font-weight:normal;color:#27D6D6;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
-			{{ title }}<a href="/news/get/{{x.id}}">{{ x.title }}</a>
+			{{ title }}<a target="blank" href="/news/get/{{x.id}}">{{ x.title }}</a>
 		</h2>	
 		<p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:15px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
 			Published Date: {{ x.pub_date }}<br>

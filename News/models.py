@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from bs4 import BeautifulSoup
 import urllib2
@@ -9,7 +10,9 @@ class news(models.Model):
 	pub_date = models.DateTimeField(auto_now_add=True)
 	upvote = models.IntegerField(default=0)
 
-
 	def __unicode__(self):
 		return u'%s' %(self.heading)
+
+
+
 

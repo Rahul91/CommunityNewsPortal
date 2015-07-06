@@ -8,6 +8,6 @@ class newsform(forms.ModelForm):
 
 	class Meta:
 		model = news
-		fields = ('heading', 'upvote')
+		fields = ('heading',)
 		widgets = { 'heading': forms.TextInput(attrs={'size': 60})}
 		#widgets = { 'upvote': forms.TextInput(attrs={'size': 10})}

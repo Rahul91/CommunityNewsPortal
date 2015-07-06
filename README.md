@@ -27,8 +27,7 @@ NewsPortal is the name of Project and News is the App.
  
 #Scope for Improvements
 
-1. If a loggedin user, adds a content, then he is routed to home page, ideally he should be routed to his page. Need to correct this.
-2. Once added a news, only admin can remove it. Ideally user who have added, should has authorization to edit it. This feature will soon be added.
+1. Once added a news, only admin can remove it. Ideally user who have added, should has authorization to edit it. This feature will soon be added.
 
  
 #Cloning the repository

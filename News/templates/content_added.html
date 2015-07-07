@@ -1,19 +1,15 @@
 {% extends "base.html" %}
 
-{% block sidebar-loggedin %}
-<ul style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:25px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
-	Hi {{ get_id.username }}!!!<br><br>
-	
-	<li><a href="/news/content/user/{{ get_id.id }}">My Content</a></li>
-	<li><a href="/news/add_news/user/{{ get_id.id }}">Add News</a></li>
-	<li><a href="/accounts/logout">Logout</a></li>
-</ul>
-
+{% block sidebar-added %}
+<ul>
+   <li><a href="javascript:goback();">Go Back</a></li>
+   <li><a href="/">Home</a></li>
+ </ul>
 {% endblock %}
 
 
-{% block content-loggedin %}
-	<h1 style="font-weight:bold;text-decoration:underline;text-transform:uppercase;color:#1D8DA3;letter-spacing:1pt;word-spacing:2pt;font-size:35px;text-align:left;font-family:arial, helvetica, sans-serif;line-height:1;">News HeadLines</h1><br>
+{% block content-added %}
+	<h1 style="font-weight:bold;text-decoration:underline;text-transform:uppercase;color:#1D8DA3;letter-spacing:1pt;word-spacing:2pt;font-size:35px;text-align:left;font-family:arial, helvetica, sans-serif;line-height:1;">Your Added Contents</h1><br>
 	{% for x in news %}
 	<div>
 		<h2 style="font-weight:normal;color:#27D6D6;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">

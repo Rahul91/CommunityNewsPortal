@@ -106,11 +106,9 @@ def add_news(request,id=1):
 		if form.is_valid():
 			form.save()
 			link = str(form.cleaned_data['heading'])
-			print link
 			x = news.objects.get(heading=link)
 
 			string_link=repr(link)
-			print type(string_link), string_link
 			url = urllib2.urlopen(link)
 			soup = BeautifulSoup(url)
 			title=soup.find('title').text
@@ -126,12 +124,7 @@ def add_news(request,id=1):
 			args['title']=title
 			args['get_id']=user_id
 
-			'''y = user_news.objects.get(title=title)
-			y.save()'''
-
-			#args['news'] = news.objects.all().order_by('-pub_date')
 			return HttpResponseRedirect('/accounts/loggedin/'+(user_id))
-			#return render(request,'loggedin_home.html',args)
 
 	else:
 		form = newsform()
@@ -163,3 +156,13 @@ def upvotes(request,id=1):
 	obj.save()
 
 	return HttpResponseRedirect('/news/get/%s/' %id)
+
+def content_added(request,id=1):
+	a=str(request.build_absolute_uri())
+	id = a.split('/')[-2]
+
+	args = {}
+	args.update(csrf(request))
+	args['added']=True
+	args['news']= news.objects.filter(user_id=id)
+	return render(request,"content_added.html", args)

@@ -33,4 +33,5 @@ urlpatterns = [
     url(r'^news/get/(?P<id>\d+)/$', 'News.views.news_single'),
     url(r'^upvotes/(?P<id>\d+)/$', 'News.views.upvotes'),
     url(r'^news/add_news/user/(?P<id>\d+)/$', 'News.views.add_news'),
+    url(r'^news/content/user/(?P<id>\d+)/$', 'News.views.content_added'),
 ]

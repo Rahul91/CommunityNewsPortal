@@ -168,6 +168,20 @@ body{
 }
 
 
+#sidebar-alreadyposted{
+	float :left;
+	width :300px;
+	border: 5px solid #27D6D6;
+}
+
+#content-alreadyposted{
+	float: left;
+	width: 800px;
+	border: 5px solid #27D6D6;
+	padding: 10px;
+}
+
+
  </style>
 
  <body>
@@ -286,6 +300,20 @@ body{
 	</div>
     <div id="content-added">
         {% block content-added %}
+        {% endblock %}
+	</div>
+	{% endif %}
+
+	{% if already %}
+	<div id="sidebar-alreadyposted">
+		{% block sidebar-alreadyposted %}
+		<ul>
+			<li><a href="/admin/">Admin Login</a></li>
+		</ul>
+		{% endblock %}
+	</div>
+    <div id="content-alreadyposted">
+        {% block content-alreadyposted %}
         {% endblock %}
 	</div>
 	{% endif %}

@@ -97,7 +97,6 @@ def bad_request(request):
 
 
 def add_news(request,id=1):
-
 	a=str(request.build_absolute_uri())
 	user_id = a.split('/')[-2]
 
@@ -106,25 +105,29 @@ def add_news(request,id=1):
 		if form.is_valid():
 			form.save()
 			link = str(form.cleaned_data['heading'])
-			x = news.objects.get(heading=link)
+			x = news.objects.filter(heading=link)
 
-			string_link=repr(link)
-			url = urllib2.urlopen(link)
-			soup = BeautifulSoup(url)
-			title=soup.find('title').text
-			x.title=title
-			
-			x.user_id=user_id
+			if (len(x)<=1):
+				print link
+				x = news.objects.get(heading=link)
+				print x
+				url = urllib2.urlopen(link)
+				soup = BeautifulSoup(url)
+				title_new=soup.find('title').text
+				print title_new
+	        	x.title=title_new
+	        	x.user_id=user_id
+	        	form.save()
+	        	x.save()
 
-			form.save()
-			x.save()
-			args = {}
-			args.update(csrf(request))
-			args['add_news']=True
-			args['title']=title
-			args['get_id']=user_id
+	        	return HttpResponseRedirect('/accounts/loggedin/'+(user_id))
 
-			return HttpResponseRedirect('/accounts/loggedin/'+(user_id))
+	    	else:
+		        args = {}
+		       	args.update(csrf(request))
+		       	args['added'] = True
+		       	args['user_id'] = user_id
+		       	return render(request,'alreadyposted.html', args)
 
 	else:
 		form = newsform()
@@ -154,15 +157,28 @@ def upvotes(request,id=1):
 	upvotes+=1
 	obj.upvote = upvotes
 	obj.save()
-
 	return HttpResponseRedirect('/news/get/%s/' %id)
+
 
 def content_added(request,id=1):
 	a=str(request.build_absolute_uri())
 	id = a.split('/')[-2]
+	print id
 
 	args = {}
 	args.update(csrf(request))
 	args['added']=True
-	args['news']= news.objects.filter(user_id=id)
+	args['userid']=id
+	args['news']= news.objects.filter(user_id=id).order_by('-pub_date')
 	return render(request,"content_added.html", args)
+
+def remove(request, userid=1,id=1):
+	a=str(request.build_absolute_uri())
+	userid = a.split('/')[-3]
+
+	args = {}
+	args.update(csrf(request))
+
+	obj= news.objects.get(id=id)
+	obj.delete()
+	return HttpResponseRedirect('/news/content/user/%s/' %userid)

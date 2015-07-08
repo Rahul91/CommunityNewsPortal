@@ -3,7 +3,6 @@
 {% block sidebar-added %}
 <ul>
    <li><a href="javascript:goback();">Go Back</a></li>
-   <li><a href="/">Home</a></li>
  </ul>
 {% endblock %}
 
@@ -17,7 +16,7 @@
 		</h2>	
 		<p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:15px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
 			Published Date: {{ x.pub_date }}<br>
-			Upvote:{{ x.upvote }}<br>
+			Upvote:{{ x.upvote }}<br><br> <a href="/news/content/remove/{{ userid }}/{{ x.id }}" style="color: #CC0000">Remove</a><br>
 			----------------------------------------------------------------------------------------------------------------------
 		</p>
 	</div>

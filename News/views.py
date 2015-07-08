@@ -108,19 +108,19 @@ def add_news(request,id=1):
 			x = news.objects.filter(heading=link)
 
 			if (len(x)<=1):
-				print link
+				print link, 'isne'
 				x = news.objects.get(heading=link)
-				print x
+				print x, type(x)
 				url = urllib2.urlopen(link)
 				soup = BeautifulSoup(url)
 				title_new=soup.find('title').text
-				print title_new
+				print title_new	
 	        	x.title=title_new
-	        	x.user_id=user_id
-	        	form.save()
-	        	x.save()
+		       	x.user_id=user_id
+		       	form.save()
+		       	x.save()
 
-	        	return HttpResponseRedirect('/accounts/loggedin/'+(user_id))
+		       	return HttpResponseRedirect('/accounts/loggedin/'+(user_id))
 
 	    	else:
 		        args = {}
@@ -128,7 +128,6 @@ def add_news(request,id=1):
 		       	args['added'] = True
 		       	args['user_id'] = user_id
 		       	return render(request,'alreadyposted.html', args)
-
 	else:
 		form = newsform()
 		args = {}

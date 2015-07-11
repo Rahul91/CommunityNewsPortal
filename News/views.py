@@ -11,7 +11,6 @@ from forms import newsform
 from bs4 import BeautifulSoup
 
 
-
 def login(request):
 	args={}
 	args.update(csrf(request))
@@ -108,13 +107,10 @@ def add_news(request,id=1):
 			x = news.objects.filter(heading=link)
 
 			if (len(x)<=1):
-				print link, 'isne'
 				x = news.objects.get(heading=link)
-				print x, type(x)
 				url = urllib2.urlopen(link)
 				soup = BeautifulSoup(url)
 				title_new=soup.find('title').text
-				print title_new	
 	        	x.title=title_new
 		       	x.user_id=user_id
 		       	form.save()
@@ -162,7 +158,6 @@ def upvotes(request,id=1):
 def content_added(request,id=1):
 	a=str(request.build_absolute_uri())
 	id = a.split('/')[-2]
-	print id
 
 	args = {}
 	args.update(csrf(request))

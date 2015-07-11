@@ -3,7 +3,7 @@
 
 <script type="text/javascript">
 {% block sidebar-home %}
-<ul style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
+<ul id="text-news">
 	<li><a href="/admin">Admin</a></li>
 	<li><a href="/accounts/register">Register</a></li>
 	<li><a href="/accounts/login">Login</a></li>
@@ -13,16 +13,16 @@
 
 
 {% block content-home %}
-	<h1 style="font-weight:bold;text-decoration:underline;text-transform:uppercase;color:#1D8DA3;letter-spacing:1pt;word-spacing:2pt;font-size:35px;text-align:left;font-family:arial, helvetica, sans-serif;line-height:1;">News HeadLines</h1><br>
+	<h1 id="text-newsheadline"><u>News HeadLines</u></h1><br><br>
 	{% for x in news %}
 	<div>
-		<h2 style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
+		<h2 id="text-news">
 		{% if login %}
 			<a href="/news/get/{{x.id}}"><u>{{ x.title|title }}</a></u>
 		{% endif %}
 		<div onclick=Warn()>{{ x.title|title }}</div>
 		</h2>
-		<p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:15px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
+		<p id="text-smallest">
 			Published Date: {{ x.pub_date }}<br><div onclick=Warn()>Upvote:{{ x.upvote }}</div><br>
 			------------------------------------------------------------------------------------------------------------------------------------------------------
 		</p>

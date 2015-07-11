@@ -9,5 +9,5 @@ class newsform(forms.ModelForm):
 	class Meta:
 		model = news
 		fields = ('heading',)
-		widgets = { 'heading': forms.TextInput(attrs={'size': 60})}
+		widgets = { 'heading': forms.TextInput(attrs={'size': 70})}
 		#widgets = { 'upvote': forms.TextInput(attrs={'size': 10})}

@@ -8,9 +8,9 @@
 {% endblock %}
 
 {% block content %}
-<h2 style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:30px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">{{ news.title|title }}</h2>
+<h2 id="text-newsheadline" style="text-align:left;">{{ news.title|title }}<br><br></h2>
 
-<p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
+<p id="text-news">
 Please click <a href="{{ news.heading }}">here</a> for more details<br><br>
 Published Date :{{ news.pub_date }}<br>
 <a href="/upvotes/{{ news.id }}">Upvotes : {{ news.upvote }}</a>

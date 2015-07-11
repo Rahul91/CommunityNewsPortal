@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 
 {% block sidebar-added %}
-<ul>
+<ul id="text-news">
    <li><a href="javascript:goback();">Go Back</a></li>
  </ul>
 {% endblock %}
 
 
 {% block content-added %}
-	<h1 style="font-weight:bold;text-decoration:underline;text-transform:uppercase;color:#1D8DA3;letter-spacing:1pt;word-spacing:2pt;font-size:35px;text-align:left;font-family:arial, helvetica, sans-serif;line-height:1;">Your Added Contents</h1><br>
+	<h1 id="text-newsheadline"><u>My Added Stuff</u></h1><br><br>
 	{% for x in news %}
 	<div>
-		<h2 style="font-weight:normal;color:#27D6D6;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
+		<h2 id="text-news">
 			{{ title }}<a target="blank" href="/news/get/{{x.id}}">{{ x.title }}</a>
 		</h2>	
-		<p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:15px;text-align:left;font-family:trebuchet MS, sans-serif;line-height:1;">
+		<p id="text-metadata">
 			Published Date: {{ x.pub_date }}<br>
 			Upvote:{{ x.upvote }}<br><br> <a href="/news/content/remove/{{ userid }}/{{ x.id }}" style="color: #CC0000">Remove</a><br>
-			----------------------------------------------------------------------------------------------------------------------
+			-------------------------------------------------------------------------------------------------------------------------
 		</p>
 	</div>
 	{% endfor %}

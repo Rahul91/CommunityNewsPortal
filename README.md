@@ -1,4 +1,4 @@
-# Exotel_NewsPortal
+# Community_NewsPortal
 
 An online news portal by the community, for the community, to the community.
 
